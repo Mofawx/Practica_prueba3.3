@@ -33,7 +33,7 @@
     <center>
         <VBox spacing="12" style="-fx-padding:20;">
             <Button text="Recargar" onAction="#cargar"/>
-            <TableView fx:id="tabla" VBox.vgrow="ALWAYS" columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+            <TableView fx:id="tabla" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="colCodigo" text="Código"/>
                     <TableColumn fx:id="colNombre" text="Nombre"/>

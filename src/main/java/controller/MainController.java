@@ -22,7 +22,7 @@ public class MainController {
     private TableColumn<Curso, Number> colPrecio, colFinal;
     @FXML
     private Label lblEstado, lblDetalle;
-    private final CursoDAO dao = new CursoArchivoDAO();
+    private final CursoDAO dao = new CursoMySQLDAO();
 
     @FXML
     public void initialize() {
