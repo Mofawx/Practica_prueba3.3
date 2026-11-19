@@ -82,6 +82,9 @@ public class CursoMySQLDAO implements CursoDAO{
             ins.setDouble(3, item.getPrecioBase());
             ins.setString(4, item.getDetalle());
             ins.setInt(5, tipoId(item));
+
+            ins.executeUpdate();
+
         }catch (PersistenciaException p){
             System.out.println("Error al sql en agregar "+p.getMessage());
         }catch (Exception e){
@@ -92,6 +95,20 @@ public class CursoMySQLDAO implements CursoDAO{
 
     @Override
     public void actualizar(Curso item) {
+        try {
+            Connection conexion = ConexionBD.getConnection();
+            String query = "UPDATE cursos SET nombre=?,precio_base=?," +
+                    "detalle=?,id_tipo=? WHERE codigo=?";
+            PreparedStatement mod = conexion.prepareStatement(query);
+            mod.setString(1, item.getNombre());
+            mod.setDouble(2, item.getPrecioBase());
+            mod.setString(3, item.getDetalle());
+            mod.setInt(4, tipoId(item));
+            mod.setString(5, item.getCodigo());
+            mod.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error al modificar " + e.getMessage());
+        }
 
     }
 
